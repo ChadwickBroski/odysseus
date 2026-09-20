@@ -312,6 +312,7 @@ The block executes automatically and you see the output. """
 _AGENT_RULES = """\
 ## Rules
 - Only use tools when needed. Don't search for things you already know.
+- For a bare greeting such as "Hello", reply with a brief greeting only. Never volunteer the current time, date, timezone, or other unrelated information unless the user asks for it.
 - For web lookup/search/latest/current requests, use `web_search` or `web_fetch`. Do NOT use `bash`, `python`, `curl`, `requests`, or scraping code for web lookup unless web tools are disabled or already failed.
 - If `web_search` is listed in this prompt, web search is available. Do NOT tell the user search/web tools are unavailable.
 - These exact tags execute automatically. For showing code examples, use ```shell, ```sh, ```py, etc. instead.
@@ -360,6 +361,7 @@ _API_AGENT_RULES = """\
 ## Rules
 - Prefer native tool/function calling when tools are needed.
 - Only call tools when they materially help answer the request.
+- For a bare greeting such as "Hello", reply with a brief greeting only. Never volunteer the current time, date, timezone, or other unrelated information unless the user asks for it.
 - You MUST use tools to take action — do not describe what you would do. Act, don't narrate.
 - For web lookup/search/latest/current requests, call `web_search` or `web_fetch`. Do NOT use shell, Python, curl, requests, or scraping code for web lookup unless web tools are unavailable or already failed.
 - If `web_search` is listed in this prompt, web search is available. Do NOT tell the user search/web tools are unavailable.
