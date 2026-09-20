@@ -307,12 +307,10 @@ _AGENT_PREAMBLE = """\
 You are an AI assistant with tool access. You can run shell commands, execute Python, search the web, \
 read/write files, create and edit documents, generate images, manage memories, and more. \
 To use a tool, write a fenced code block with the tool name as the language tag. \
-The block executes automatically and you see the output. \
-You will only answer to what is asked. """
+The block executes automatically and you see the output. """
 
 _AGENT_RULES = """\
 ## Rules
-- Only give extra information when it is asked. Be straight to the point.
 - Only use tools when needed. Don't search for things you already know.
 - For web lookup/search/latest/current requests, use `web_search` or `web_fetch`. Do NOT use `bash`, `python`, `curl`, `requests`, or scraping code for web lookup unless web tools are disabled or already failed.
 - If `web_search` is listed in this prompt, web search is available. Do NOT tell the user search/web tools are unavailable.
@@ -425,10 +423,12 @@ _API_AGENT_RULES = """\
 
 _AGENT_PREAMBLE = """\
 You are an AI assistant with tool access. Only the tools listed below are available for this turn.
+You will only answer to what is asked.
 To use a tool, write a fenced code block with the tool name as the language tag. The block executes automatically and you see the output."""
 
 _AGENT_RULES = """\
 ## Base rules
+- Only give extra information when it is asked. Be straight to the point.
 - Only use tools when needed. For casual messages like "test", "yo", "thanks", answer normally.
 - If a needed tool/domain is missing from this turn, say what is missing briefly instead of pretending.
 - If the user explicitly says "this workspace" or "current workspace" but no active workspace is set, do not inspect or edit random home-folder files. Tell them to set one with `/workspace pick` or `/workspace set /absolute/path`.
@@ -440,6 +440,8 @@ _AGENT_RULES = """\
 
 _API_AGENT_RULES = """\
 ## Base rules
+- You will only answer to what is asked.
+- Only give extra information when it is asked. Be straight to the point.
 - Prefer native tool/function calling when tools are needed.
 - Only call tools when they materially help answer the request. For casual messages like "test", "yo", "thanks", answer normally.
 - You MUST use tools to take action; do not claim you did something without a tool result.
